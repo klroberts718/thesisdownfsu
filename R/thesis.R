@@ -1,7 +1,7 @@
 #' Creates an R Markdown PDF Thesis document
 #'
 #' This is a function called in output in the YAML of the driver Rmd file
-#' to specify using the Reed College Senior Thesis LaTeX template and cls files.
+#' to specify using the Florida State University Thesis LaTeX template and cls files.
 #'
 #' @export
 #'
@@ -13,11 +13,11 @@
 #' "default", "tango", "pygments", "kate", "monochrome", "espresso", "zenburn",
 #' and "haddock". Pass NULL to prevent syntax highlighting.
 #'
-#' @return A modified \code{pdf_document} based on the Reed Senior Thesis LaTeX
+#' @return A modified \code{pdf_document} based on the Florida State University Thesis LaTeX
 #'   template
 #' @examples
 #' \dontrun{
-#' output:thesisdown::thesis_pdf
+#' output:thesisdownfsu::thesis_pdf
 #' }
 thesis_pdf <- function(toc = TRUE, toc_depth = 3, highlight = "default", pandoc_args = NULL, ...) {
   base <- bookdown::pdf_book(
@@ -52,7 +52,7 @@ thesis_pdf <- function(toc = TRUE, toc_depth = 3, highlight = "default", pandoc_
 #' @return A gitbook webpage
 #' @examples
 #' \dontrun{
-#' output:thesisdown::thesis_gitbook
+#' output:thesisdownfsu::thesis_gitbook
 #' }
 thesis_gitbook <- function(...) {
   config_default <- list(

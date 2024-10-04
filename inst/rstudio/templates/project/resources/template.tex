@@ -1,257 +1,123 @@
-% This is the Reed College LaTeX thesis template. Most of the work
-% for the document class was done by Sam Noble (SN), as well as this
-% template. Later comments etc. by Ben Salzberg (BTS). Additional
-% restructuring and APA support by Jess Youngberg (JY).
-% Your comments and suggestions are more than welcome; please email
-% them to cus@reed.edu
+% This is a "bare-bones" thesis template file.  For examples of how to
+% use a few more LaTeX features, look in the 'sample' folder.  Read
+% the User Guide for documentation of the 'fsuthesis' class features.
+% Follow the FSU 'Guidelines and Requirements for Electronic Theses,
+% Treatises, and Dissertations (ETDs)' document for all entries.
+
+\documentclass[11pt,expanded,copyright]{fsuthesis}
+
+% Additional packages may be loaded here.
+
+% Do NOT use 'geometry', 'setspace', or 'tocloft' packages! They will
+% mess up the spacing provided by 'fsuthesis'.
+
+% If using the BibLaTeX package for generating a bibliography or
+% references section, uncomment the following 5 lines. This is a
+% basic starting point, and you may want other package options.
+% You'll also need to uncomment the '\printbibliography' line
+% toward the end of this file. Refer to the biblatex package
+% documentation for information. The file 'myrefs.bib' contains
+% a few sample references. 
+
+%\usepackage[american]{babel}
+%\addto\captionsamerican{\renewcommand*{\contentsname}{Table of Contents}}
+%\usepackage{csquotes}
+%\usepackage{biblatex}
+%\addbibresource{myrefs.bib}
+
 %
-% See https://www.reed.edu/cis/help/LaTeX/index.html for help. There are a
-% great bunch of help pages there, with notes on
-% getting started, bibtex, etc. Go there and read it if you're not
-% already familiar with LaTeX.
+% Update these entries. See the User Guide for more information.
 %
-% Any line that starts with a percent symbol is a comment.
-% They won't show up in the document, and are useful for notes
-% to yourself and explaining commands.
-% Commenting also removes a line from the document;
-% very handy for troubleshooting problems. -BTS
+\title{This Is My Title:\protect\\And This Is Its Second Line}
+\author{Viktor Spoyles}
+\college{College of Extraterrestrial Recreation}
+\department{Department of Human Slacking}  % Delete if no department
+\manuscripttype{Dissertation}              % [Thesis, Dissertation, Treatise]
+\degree{Master of My Domain}               % [Master of Science, Doctor of Philosophy...]  
+\degreeyear{2021}
+\defensedate{October 31, 2021}
 
-% As far as I know, this follows the requirements laid out in
-% the 2002-2003 Senior Handbook. Ask a librarian to check the
-% document before binding. -SN
-
-%%
-%% Preamble
-%%
-% \documentclass{<something>} must begin each LaTeX document
-\documentclass[12pt,twoside]{reedthesis}
-% Packages are extensions to the basic LaTeX functions. Whatever you
-% want to typeset, there is probably a package out there for it.
-% Chemistry (chemtex), screenplays, you name it.
-% Check out CTAN to see: https://www.ctan.org/
-%%
-\usepackage{graphicx,latexsym}
-\usepackage{amsmath}
-\usepackage{amssymb,amsthm}
-\usepackage{longtable,booktabs,setspace}
-\usepackage{chemarr} %% Useful for one reaction arrow, useless if you're not a chem major
-\usepackage[hyphens]{url}
-% Added by CII
-\usepackage{hyperref}
-\usepackage{lmodern}
-\usepackage{float}
-\floatplacement{figure}{H}
-% Thanks, @Xyv
-\usepackage{calc}
-% End of CII addition
-\usepackage{rotating}
-
-% Next line commented out by CII
-%%% \usepackage{natbib}
-% Comment out the natbib line above and uncomment the following two lines to use the new
-% biblatex-chicago style, for Chicago A. Also make some changes at the end where the
-% bibliography is included.
-%\usepackage{biblatex-chicago}
-%\bibliography{thesis}
-
-
-% Added by CII (Thanks, Hadley!)
-% Use ref for internal links
-\renewcommand{\hyperref}[2][???]{\autoref{#1}}
-\def\chapterautorefname{Chapter}
-\def\sectionautorefname{Section}
-\def\subsectionautorefname{Subsection}
-% End of CII addition
-
-% Added by CII
-\usepackage{caption}
-\captionsetup{width=5in}
-% End of CII addition
-
-% \usepackage{times} % other fonts are available like times, bookman, charter, palatino
-
-% Syntax highlighting #22
-$if(highlighting-macros)$
-  $highlighting-macros$
-$endif$
-
-% To pass between YAML and LaTeX the dollar signs are added by CII
-\title{$title$}
-\author{$author$}
-% The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
-\date{$date$}
-\division{$division$}
-\advisor{$advisor$}
-\institution{$institution$}
-\degree{$degree$}
-%If you have two advisors for some reason, you can use the following
-% Uncommented out by CII
-$if(altadvisor)$
-\altadvisor{$altadvisor$}
-$endif$
-% End of CII addition
-
-%%% Remember to use the correct department!
-\department{$department$}
-% if you're writing a thesis in an interdisciplinary major,
-% uncomment the line below and change the text as appropriate.
-% check the Senior Handbook if unsure.
-%\thedivisionof{The Established Interdisciplinary Committee for}
-% if you want the approval page to say "Approved for the Committee",
-% uncomment the next line
-%\approvedforthe{Committee}
-
-% Added by CII
-%%% Copied from knitr
-%% maxwidth is the original width if it's less than linewidth
-%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
-\makeatletter
-\def\maxwidth{ %
-  \ifdim\Gin@nat@width>\linewidth
-    \linewidth
-  \else
-    \Gin@nat@width
-  \fi
-}
-\makeatother
-
-% From {rticles}
-$if(csl-refs)$
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-% for Pandoc 2.8 to 2.10.1
-\newenvironment{cslreferences}%
-  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
-  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
-  {\par}
-% For Pandoc 2.11+
-% As noted by @mirh [2] is needed instead of [3] for 2.12
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
-  \fi
- }%
- {}
-\usepackage{calc} % for calculating minipage widths
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
-$endif$
-
-\renewcommand{\contentsname}{Table of Contents}
-% End of CII addition
-
-\setlength{\parskip}{0pt}
-
-% Added by CII
-$if(space_between_paragraphs)$
-  %\setlength{\parskip}{\baselineskip}
-  \usepackage[parfill]{parskip}
-$endif$
-
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
-\Acknowledgements{
-$acknowledgements$
-}
-
-\Dedication{
-$dedication$
-}
-
-\Preface{
-$preface$
-}
-
-\Abstract{
-$abstract$
-}
-
-$for(header-includes)$
-	$header-includes$
-$endfor$
-% End of CII addition
-%%
-%% End Preamble
-%%
 %
+% If creating a PDF, you may want to uncomment these and enter
+% appropriate metadata for your document. See the User Guide.
+%
+%\subject{My Topic}
+%\keywords{keyterm1; keyterm2; keyterm3; ...}
+%
+
+%
+% Update to use the real names and positions of each person.
+% See FSU's 'Guidelines and Requirements' document for the proper
+% formats and titles.
+%
+\committeeperson{Faux Causson Yorverk}{Professor Directing Traffic}
+\committeeperson{Verda Boizaar}{University Representative}
+\committeeperson{Beauxeau D'Claune}{Committee Member}
+\committeeperson{Arlip Zarseeld}{Committee Member}
+
+\clubpenalty=9999
+\widowpenalty=9999
 
 \begin{document}
 
-% Everything below added by CII
-$if(title)$
-  \maketitle
-$endif$
+\frontmatter
+\maketitle
+\makecommitteepage
 
-\frontmatter % this stuff will be roman-numbered
-\pagestyle{empty} % this removes page numbers from the frontmatter
+%\begin{dedication}
+%\end{dedication}
 
-$if(acknowledgements)$
-  \begin{acknowledgements}
-    $acknowledgements$
-  \end{acknowledgements}
-$endif$
+%\begin{acknowledgments}
+%\end{acknowledgments}
 
-$if(preface)$
-  \begin{preface}
-    $preface$
-  \end{preface}
-$endif$
+\tableofcontents
+%\listoftables
+%\listoffigures
+%\listofmusex
 
-$if(abbreviations)$
-\chapter*{List of Abbreviations}
-\begin{table}[h]
-    \centering
-    \begin{tabular}{ll}
-        $for(abbreviations/pairs)$
-        \textbf{$it.key$} & $it.value$ \\
-        $endfor$
-    \end{tabular}
-\end{table}
-$endif$
+%\begin{listofsymbols}
+%\end{listofsymbols}
 
-$if(toc)$
-  \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
-  \setcounter{secnumdepth}{$toc-depth$}
-  \setcounter{tocdepth}{$toc-depth$}
-  \tableofcontents
-$endif$
+%\begin{listofabbrevs}
+%\end{listofabbrevs}
 
-$if(lot)$
-  \listoftables
-$endif$
+\begin{abstract}
+This is my abstract.
+\end{abstract}
 
-$if(lof)$
-  \listoffigures
-$endif$
+\mainmatter
 
-$if(abstract)$
-  \begin{abstract}
-    $abstract$
-  \end{abstract}
-$endif$
+\input chapter1
+%\input chapter2
+%\input chapter3
 
-$if(dedication)$
-  \begin{dedication}
-    $dedication$
-  \end{dedication}
-$endif$
+%\appendix
+%\input appendix1
 
-\mainmatter % here the regular arabic numbering starts
-\pagestyle{fancyplain} % turns page numbering back on
+% You have your choice of bibliography sections: either
+% hand-crafted or BibLaTeX. The hand-crafted References
+% section is enabled by default. Remove these entries if
+% you're using BibLaTeX.
 
-$body$
+% This is the "hand-crafted" bibliography/references section:
+\begin{references}
+Mybib, Sample. \textit{An Example of a Bibliographic Entry
+ Created Manually}. Tallahassee, Florida: Fornish and Frak, 2010.
 
+Smith, Marigold. \textit{Lots and Lots of Bibliographic Entries
+ and How to Display Them}. Tallahassee, Florida: Gibson and Goulash, 2010.
+\end{references}
 
-% Index?
+% Or use the BibLaTeX bibliography package, uncomment the lines in the
+% preamble, and uncomment the \printbibliography line below. View the
+% file 'myrefs.bib' to get a feel for what these entries may look
+% like. See the document in the 'sample' folder for more citation and
+% BibLaTeX examples.
+
+%\printbibliography
+
+\begin{biosketch}
+This is my biography.
+\end{biosketch}
 
 \end{document}

@@ -1,5 +1,5 @@
-#' thesisdown: A package for creating undergraduate, Masters, and PhD theses
-#' using R Markdown
+#' thesisdownfsu: A package for creating undergraduate, Masters, and PhD theses
+#' using R Markdown using the Florida State University LaTeX template
 #'
 #'
 #' @section thesis_gitbook:
@@ -11,5 +11,5 @@
 #' @section thesis_epub:
 #' Creates an R Markdown thesis template as an ebook
 #' @docType package
-#' @name thesisdown
+#' @name thesisdownfsu
 "_PACKAGE"
